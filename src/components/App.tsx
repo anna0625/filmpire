@@ -1,13 +1,13 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { CssBaseline } from '@mui/material';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { CssBaseline } from "@mui/material";
+import { Switch, Route } from "react-router-dom";
 
 // eslint-disable-next-line import/no-named-as-default-member
-import useStyles from './styles';
+import useStyles from "./styles";
 
-import { Actors, MovieInformation, Movies, NavBar, Profile } from './index';
+import { Actors, MovieInformation, Movies, NavBar, Profile } from "./index";
 
 const App = () => {
   const classes = useStyles();
