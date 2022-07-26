@@ -60,5 +60,9 @@
   },
   "devDependencies": {
     "typescript": "^4.7.4"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/anna0625/filmpire.git",
+  "author": "anna0625 <anna860625@gmail.com>",
+  "license": "MIT"
 }
