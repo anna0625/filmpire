@@ -28,23 +28,23 @@ const NavBar = () => {
     <AppBar position="fixed">
       <Toolbar className={classes.toolbar}>
         {isMobile && (
-        <IconButton
-          color="inherit"
-          edge="start"
-          style={{ outline: 'none' }}
-          onClick={() => {}}
-          className={classes.menuButton}
-        >
-          <Menu />
-        </IconButton>
+          <IconButton
+            color="inherit"
+            edge="start"
+            style={{ outline: 'none' }}
+            onClick={() => {}}
+            className={classes.menuButton}
+          >
+            <Menu />
+          </IconButton>
         )}
-        <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => { }}>
+        <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
           {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
         </IconButton>
         {!isMobile && 'Search...'}
         <div>
           {!isAuthenticated ? (
-            <Button color="inherit" onClick={() => { }}>
+            <Button color="inherit" onClick={() => {}}>
               Login &nbsp; <AccountCircle />
             </Button>
           ) : (
@@ -53,10 +53,14 @@ const NavBar = () => {
               component={Link}
               to="/profile/:id"
               className={classes.linkButton}
-              onClick={() => { }}
-              >
-                {!isMobile && <>My Movies &nbsp;</>}
-              <Avatar style={{ width: 30, height: 30 }} src="https://picsum.photos/200" alt="Profile" />
+              onClick={() => {}}
+            >
+              {!isMobile && <>My Movies &nbsp;</>}
+              <Avatar
+                style={{ width: 30, height: 30 }}
+                src="https://picsum.photos/200"
+                alt="Profile"
+              />
             </Button>
           )}
         </div>
