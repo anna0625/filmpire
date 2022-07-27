@@ -1,5 +1,5 @@
 // import { makeStyles } from '@material-ui/core/styles';
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
   toolbar: {
@@ -20,7 +20,5 @@ export default makeStyles((theme) => ({
       display: 'none',
     },
   },
-  linkButton: {
-
-  }
+  linkButton: {},
 }));
