@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -12,5 +12,5 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </ThemeProvider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
