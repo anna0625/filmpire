@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   AppBar,
   IconButton,
@@ -15,6 +16,7 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
+import { Sidebar } from '..';
 
 import useStyles from './styles';
 
@@ -23,50 +25,77 @@ const NavBar = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
   const theme = useTheme();
   const isAuthenticated = true;
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <AppBar position="fixed">
-      <Toolbar className={classes.toolbar}>
-        {isMobile && (
-          <IconButton
-            color="inherit"
-            edge="start"
-            style={{ outline: 'none' }}
-            onClick={() => {}}
-            className={classes.menuButton}
-          >
-            <Menu />
-          </IconButton>
-        )}
-        <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
-          {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
-        </IconButton>
-        {!isMobile && 'Search...'}
-        <div>
-          {!isAuthenticated ? (
-            <Button color="inherit" onClick={() => {}}>
-              Login &nbsp; <AccountCircle />
-            </Button>
-          ) : (
-            <Button
+    <>
+      <AppBar position="fixed">
+        <Toolbar className={classes.toolbar}>
+          {isMobile && (
+            <IconButton
               color="inherit"
-              component={Link}
-              to="/profile/:id"
-              className={classes.linkButton}
+              edge="start"
+              style={{ outline: 'none' }}
               onClick={() => {}}
+              className={classes.menuButton}
             >
-              {!isMobile && <>My Movies &nbsp;</>}
-              <Avatar
-                style={{ width: 30, height: 30 }}
-                src="https://picsum.photos/200"
-                alt="Profile"
-              />
-            </Button>
+              <Menu />
+            </IconButton>
           )}
-        </div>
-        {isMobile && 'Search...'}
-      </Toolbar>
-    </AppBar>
+          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+            {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
+          {!isMobile && 'Search...'}
+          <div>
+            {!isAuthenticated ? (
+              <Button color="inherit" onClick={() => {}}>
+                Login &nbsp; <AccountCircle />
+              </Button>
+            ) : (
+              <Button
+                color="inherit"
+                component={Link}
+                to="/profile/:id"
+                className={classes.linkButton}
+                onClick={() => {}}
+              >
+                {!isMobile && <>My Movies &nbsp;</>}
+                <Avatar
+                  style={{ width: 30, height: 30 }}
+                  src="https://picsum.photos/200"
+                  alt="Profile"
+                />
+              </Button>
+            )}
+          </div>
+          {isMobile && 'Search...'}
+        </Toolbar>
+      </AppBar>
+      <div>
+        <nav className={classes.drawer}>
+          {isMobile ? (
+            <>
+              <Drawer
+                variant="temporary"
+                anchor="right"
+                open={mobileOpen}
+                classes={{ paper: classes.drawerPaper }}
+                ModalProps={{ keepMounted: true }}
+              />
+              <Sidebar setMobileOpen={setMobileOpen} />
+            </>
+          ) : (
+            <Drawer
+              classes={{ paper: classes.drawerPaper }}
+              variant="permanent"
+              open
+            >
+              <Sidebar setMobileOpen={setMobileOpen} />
+            </Drawer>
+          )}
+        </nav>
+      </div>
+    </>
   );
 };
 
